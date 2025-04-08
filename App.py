@@ -36,8 +36,11 @@ st.markdown("<br>", unsafe_allow_html=True)
 st.markdown("---")
 
 # Check OpenCV version and dnn_superres availability
-if not hasattr(cv2, 'dnn_superres'):
-    st.error("Your OpenCV installation does not support dnn_superres. Install with: pip install opencv-contrib-python")
+try:
+    if not hasattr(cv2, 'dnn_superres'):
+        raise ImportError("Your OpenCV installation does not support dnn_superres.")
+except ImportError as e:
+    st.error(f"{e} Install with: pip install opencv-contrib-python")
     st.stop()
 
 # Load OpenCV Super-Resolution Model
