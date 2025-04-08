@@ -8,7 +8,7 @@ import os
 from rembg import remove  # type: ignore # For background removal
 from streamlit_image_zoom import image_zoom  # type: ignore
 
-# Page Config
+# Page Config 
 st.set_page_config(
     page_title="SnapSaathi Studio.AI",
     page_icon="🖼️",
