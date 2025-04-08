@@ -21,7 +21,7 @@ st.markdown("""
         background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
         padding: 2rem;
         border-radius: 15px;
-        text-align: center;
+        text-align: center; 
         box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
     '>
         <h1 style='color: white; font-size: 3em;'>🪄SnapSaathi Studio.AI🤖</h1>
