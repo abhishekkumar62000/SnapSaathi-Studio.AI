@@ -6,6 +6,6 @@ torch
 torchvision
 torchaudio
 gfpgan
-real-esrgan
+git+https://github.com/xinntao/Real-ESRGAN.git
 streamlit_image_zoom
 rembg
