@@ -10,6 +10,6 @@ git+https://github.com/xinntao/Real-ESRGAN.git
 streamlit_image_zoom
 rembg
 firebase-admin
-onnxruntime==1.15.1
+onnxruntime==1.21.0
 
 
