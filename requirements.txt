@@ -1,5 +1,12 @@
+--extra-index-url https://pypi.org/simple
+
+# Force uninstall opencv-python if pulled by another package
+pip-autoremove
+opencv-python  # dummy line to let pip-autoremove catch it
+
+# Main dependencies
 streamlit
-opencv-contrib-python  # ✅ Fixed: for dnn_superres support
+opencv-contrib-python  # ✅ for dnn_superres
 numpy
 Pillow
 torch
@@ -10,4 +17,5 @@ git+https://github.com/xinntao/Real-ESRGAN.git
 streamlit_image_zoom
 rembg
 firebase-admin
-onnxruntime==1.21.0  # ✅ Compatible with Python 3.12
+onnxruntime==1.21.0
+
