@@ -1,0 +1,11 @@
+streamlit
+opencv-python
+numpy
+Pillow
+torch
+torchvision
+torchaudio
+gfpgan
+real-esrgan
+streamlit_image_zoom
+rembg
