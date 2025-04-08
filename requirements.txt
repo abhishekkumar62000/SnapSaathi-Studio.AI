@@ -6,6 +6,7 @@ torch
 torchvision
 torchaudio
 gfpgan
+firebase-admin
 git+https://github.com/xinntao/Real-ESRGAN.git
 streamlit_image_zoom
 rembg
