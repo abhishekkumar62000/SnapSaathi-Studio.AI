@@ -46,9 +46,7 @@ except ImportError as e:
 # Load OpenCV Super-Resolution Model
 def load_superres_model(enhancement_level):
     sr = cv2.dnn_superres.DnnSuperResImpl_create()
-    model_path = os.path.join(os.getcwd(), "FSRCNN_x4.pb")  # Pre-trained model
-    st.write("Model path:", model_path)
-    st.write("File exists:", os.path.exists(model_path))
+    model_path = "FSRCNN_x4.pb"  # Pre-trained model
     if not os.path.exists(model_path):
         st.error(f"Model file not found: {model_path}")
         return None
@@ -79,8 +77,7 @@ def enhance_image(image, sr_model):
     try:
         enhanced_image = sr_model.upsample(image)
     except Exception as e:
-        st.error(f"Enhancement failed: {e}")
-        return None
+        raise RuntimeError(f"Error during enhancement: {e}")
 
     enhanced_image = cv2.cvtColor(enhanced_image, cv2.COLOR_BGR2RGB)
     return Image.fromarray(enhanced_image)
@@ -128,8 +125,7 @@ def apply_vintage_filter(img):
 def add_text(img, text):
     draw = ImageDraw.Draw(img)
     try:
-        font_path = os.path.join(os.getcwd(), "arial.ttf")
-        font = ImageFont.truetype(font_path, 30)
+        font = ImageFont.truetype("arial.ttf", 30)  # Ensure arial.ttf exists on the system
     except IOError:
         st.error("Font file not found. Please ensure 'arial.ttf' is available.")
         return img
@@ -426,6 +422,3 @@ if image:
                 file_name=f"enhanced_image.{file_extension}",
                 mime=f"image/{file_extension}"
             )
-
-if "base_enhanced_image" not in st.session_state:
-    st.session_state.base_enhanced_image = None
