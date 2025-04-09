@@ -319,19 +319,17 @@ if image:
         # Store base enhanced image for applying filters separately
         st.session_state.base_enhanced_image = enhanced_image
 
-    # Once base enhanced image exists in session
-    if "base_enhanced_image" in st.session_state:
+    # Ensure base_image is initialized
+    if "base_enhanced_image" not in st.session_state or st.session_state.base_enhanced_image is None:
+        st.error("No enhanced image available. Please enhance an image first.")
+    else:
         base_image = st.session_state.base_enhanced_image
-
-        # Set default filter
-        if "selected_filter" not in st.session_state:
-            st.session_state.selected_filter = "None"
 
         # Dropdown to choose filter
         filter = st.selectbox(
             "Apply a filter:",
             ["None", "Grayscale", "Sepia", "Cartoon"],
-            index=["None", "Grayscale", "Sepia", "Cartoon"].index(st.session_state.selected_filter),
+            index=["None", "Grayscale", "Sepia", "Cartoon"].index(st.session_state.get("selected_filter", "None")),
             key="selected_filter"
         )
 
@@ -405,9 +403,9 @@ if image:
         # Show both images
         col1, col2 = st.columns(2)
         with col1:
-            st.image(image, caption="Original", use_column_width=True)
+            st.image(image, caption="Original", use_container_width=True)
         with col2:
-            st.image(enhanced_image, caption=f"Enhanced ({st.session_state.selected_filter})", use_column_width=True)
+            st.image(enhanced_image, caption=f"Enhanced ({st.session_state.selected_filter})", use_container_width=True)
 
         # Add download option
         download_format = st.selectbox("Select download format:", ["PNG", "JPEG"])
