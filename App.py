@@ -128,7 +128,8 @@ def apply_vintage_filter(img):
 def add_text(img, text):
     draw = ImageDraw.Draw(img)
     try:
-        font = ImageFont.truetype("arial.ttf", 30)  # Ensure arial.ttf exists on the system
+        font_path = os.path.join(os.getcwd(), "arial.ttf")
+        font = ImageFont.truetype(font_path, 30)
     except IOError:
         st.error("Font file not found. Please ensure 'arial.ttf' is available.")
         return img
@@ -425,3 +426,6 @@ if image:
                 file_name=f"enhanced_image.{file_extension}",
                 mime=f"image/{file_extension}"
             )
+
+if "base_enhanced_image" not in st.session_state:
+    st.session_state.base_enhanced_image = None
