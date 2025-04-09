@@ -319,19 +319,17 @@ if image:
         # Store base enhanced image for applying filters separately
         st.session_state.base_enhanced_image = enhanced_image
 
-    # Once base enhanced image exists in session
-    if "base_enhanced_image" in st.session_state:
+    # Ensure base_image is initialized
+    if "base_enhanced_image" not in st.session_state or st.session_state.base_enhanced_image is None:
+        st.warning("No enhanced image available. Please enhance an image first by clicking the 'Enhance Image' button.")
+    else:
         base_image = st.session_state.base_enhanced_image
-
-        # Set default filter
-        if "selected_filter" not in st.session_state:
-            st.session_state.selected_filter = "None"
 
         # Dropdown to choose filter
         filter = st.selectbox(
             "Apply a filter:",
             ["None", "Grayscale", "Sepia", "Cartoon"],
-            index=["None", "Grayscale", "Sepia", "Cartoon"].index(st.session_state.selected_filter),
+            index=["None", "Grayscale", "Sepia", "Cartoon"].index(st.session_state.get("selected_filter", "None")),
             key="selected_filter"
         )
 
