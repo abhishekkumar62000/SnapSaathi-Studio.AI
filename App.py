@@ -46,7 +46,9 @@ except ImportError as e:
 # Load OpenCV Super-Resolution Model
 def load_superres_model(enhancement_level):
     sr = cv2.dnn_superres.DnnSuperResImpl_create()
-    model_path = "FSRCNN_x4.pb"  # Pre-trained model
+    model_path = os.path.join(os.getcwd(), "FSRCNN_x4.pb")  # Pre-trained model
+    st.write("Model path:", model_path)
+    st.write("File exists:", os.path.exists(model_path))
     if not os.path.exists(model_path):
         st.error(f"Model file not found: {model_path}")
         return None
@@ -77,7 +79,8 @@ def enhance_image(image, sr_model):
     try:
         enhanced_image = sr_model.upsample(image)
     except Exception as e:
-        raise RuntimeError(f"Error during enhancement: {e}")
+        st.error(f"Enhancement failed: {e}")
+        return None
 
     enhanced_image = cv2.cvtColor(enhanced_image, cv2.COLOR_BGR2RGB)
     return Image.fromarray(enhanced_image)
