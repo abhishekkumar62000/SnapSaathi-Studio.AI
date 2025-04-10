@@ -1,11 +1,9 @@
-# Force uninstall any wrong OpenCV versions if added by deps
 pip-autoremove
 opencv-python
 
-# Core libs
 streamlit
 opencv-contrib-python==4.7.0.72
-numpy==1.23.5  # ✅ compatible with OpenCV 4.7 and avoids multiarray import error
+numpy==1.23.5  # ✅ very stable for OpenCV & avoids crash
 Pillow
 torch
 torchvision
