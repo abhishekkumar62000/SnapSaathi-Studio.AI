@@ -1,11 +1,11 @@
-# First uninstall opencv-python if it gets installed by dependencies
+# Force uninstall any wrong OpenCV versions if added by deps
 pip-autoremove
 opencv-python
 
-# Main dependencies
+# Core libs
 streamlit
-opencv-contrib-python==4.7.0.72  # ✅ tested version with dnn_superres
-numpy
+opencv-contrib-python==4.7.0.72
+numpy==1.23.5  # ✅ compatible with OpenCV 4.7 and avoids multiarray import error
 Pillow
 torch
 torchvision
