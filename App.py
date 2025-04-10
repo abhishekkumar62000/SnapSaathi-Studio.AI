@@ -420,3 +420,13 @@ if image:
                 file_name=f"enhanced_image.{file_extension}",
                 mime=f"image/{file_extension}"
             )
+
+# Check NumPy and OpenCV versions
+try:
+    import numpy as np
+    import cv2  # Importing cv2 for OpenCV
+
+    st.write("✅ NumPy version:", np.__version__)
+    st.write("✅ OpenCV version:", cv2.__version__)
+except ImportError as e:
+    st.error(f"❌ Error importing libraries: {e}")
