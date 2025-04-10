@@ -1,12 +1,10 @@
---extra-index-url https://pypi.org/simple
-
-# Force uninstall opencv-python if pulled by another package
+# First uninstall opencv-python if it gets installed by dependencies
 pip-autoremove
-opencv-python  # dummy line to let pip-autoremove catch it
+opencv-python
 
 # Main dependencies
 streamlit
-opencv-contrib-python  # ✅ for dnn_superres
+opencv-contrib-python==4.7.0.72  # ✅ tested version with dnn_superres
 numpy
 Pillow
 torch
@@ -18,4 +16,3 @@ streamlit_image_zoom
 rembg
 firebase-admin
 onnxruntime==1.21.0
-
