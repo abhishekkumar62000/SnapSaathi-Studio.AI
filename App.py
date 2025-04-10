@@ -1,7 +1,7 @@
 import streamlit as st
 import cv2
 import numpy as np 
-from PIL import Image, ImageEnhance, ImageOps, ImageDraw, ImageFont 
+from PIL import Image, ImageEnhance, ImageOps, ImageDraw, ImageFont
 from PIL.ExifTags import TAGS  # For EXIF metadata 
 import io
 import os
