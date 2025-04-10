@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image, ImageEnhance, ImageOps, ImageDraw, ImageFont 
 from PIL.ExifTags import TAGS  # For EXIF metadata 
 import io
-import os 
+import os
 from rembg import remove  # type: ignore # For background removal
 from streamlit_image_zoom import image_zoom  # type: ignore
 
